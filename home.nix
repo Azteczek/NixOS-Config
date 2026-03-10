@@ -20,8 +20,8 @@
 	xdg.configFile."waybar/config.jsonc".source = ./config/waybar/config.jsonc;
 	xdg.configFile."waybar/style.css".source = ./config/waybar/style.css;
 # !! SWAYLOCK
-	programs.swaylock.enable = true; 
-	xdg.configFile."swaylock/config".source = ./config/swaylock/config;  
+#	programs.swaylock.enable = true; 
+#	xdg.configFile."swaylock/config".source = ./config/swaylock/config;  
 # !! FOOT !!
 	xdg.configFile."foot/foot.ini".source = ./config/foot/foot.ini;
 # !! HYPRPAPER !!

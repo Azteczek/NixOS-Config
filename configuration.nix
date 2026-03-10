@@ -36,13 +36,14 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-
+  boot.loader.systemd-boot.configurationLimit = 5;
   
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
-
+  
+  
   # Sound configuration
   services.pipewire = {
     enable = true;
@@ -56,7 +57,8 @@
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-  };
+    theme = "sugar-dark";
+  }; 
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -88,12 +90,14 @@
   };
 
   programs.firefox.enable = true;
+ 
+  hardware.bluetooth.enable = true;
   
   programs.git = {
     enable = true;
     config = {
       user = {
-        email = "krystian.wrblew@gmail.com";
+        email = "243776410+Azteczek@users.noreply.github.com";
         name = "Azteczek";
       };
     };
@@ -103,19 +107,23 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    spotify
     kitty
     foot
     waybar
     git
     hyprpaper
     discord-ptb
-    pkgs.librewolf
-    # libreoffice-qt
+    librewolf
+    libreoffice
     rofi
     kdePackages.dolphin
     kdePackages.qtsvg
     fastfetch
-    hyprshot  
+    hyprshot
+    hyprcursor 
+    sddm-sugar-dark  
+    overskride
 ];
 
 
