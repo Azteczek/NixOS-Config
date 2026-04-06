@@ -80,6 +80,9 @@
 
   programs.fish.enable = true;
 
+  services.gvfs.enable = true;
+  services.udisks2.enable = true; 
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.krystian = {
     isNormalUser = true;
@@ -88,6 +91,8 @@
       tree
     ];
   };
+
+  services.flatpak.enable = true;
 
   programs.firefox.enable = true;
  
@@ -105,7 +110,7 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     spotify
     kitty
@@ -116,7 +121,9 @@
     discord-ptb
     librewolf
     libreoffice
+    lshw
     rofi
+    gimp
     kdePackages.dolphin
     kdePackages.qtsvg
     fastfetch
@@ -124,7 +131,12 @@
     hyprcursor 
     sddm-sugar-dark  
     overskride
+    geeqie
+    usbutils
+    p7zip-rar
+    unzip
 ];
+
 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

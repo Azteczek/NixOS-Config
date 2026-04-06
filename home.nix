@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 {
 	home.username = "krystian";
 	home.homeDirectory = "/home/krystian";
@@ -16,16 +16,19 @@
 					'';
 	};
 
+	imports = [
+		./home-minis/nvim.nix
+		./home-minis/mnta.nix
+	];
+	
+	
+
+# Config files
 # !! WAYBAR !! 
 	xdg.configFile."waybar/config.jsonc".source = ./config/waybar/config.jsonc;
 	xdg.configFile."waybar/style.css".source = ./config/waybar/style.css;
-# !! SWAYLOCK
-#	programs.swaylock.enable = true; 
-#	xdg.configFile."swaylock/config".source = ./config/swaylock/config;  
 # !! FOOT !!
 	xdg.configFile."foot/foot.ini".source = ./config/foot/foot.ini;
 # !! HYPRPAPER !!
 	xdg.configFile."hypr/hyprpaper.conf".source = ./config/hypr/hyprpaper.conf;
-
-
 }

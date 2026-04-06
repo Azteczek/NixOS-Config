@@ -7,12 +7,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    caelestia-nix = {
-      url = "github:Markus328/caelestia-nix";
+    mnta = {
+      url = "github:Khenziii/mnta";
     };
   };
 
-  outputs = { nixpkgs, home-manager, ...} @ inputs: {
+
+  outputs = { nixpkgs, home-manager, mnta, ...} @ inputs: {
     nixosConfigurations.krystian = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -22,14 +23,14 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.krystian = import ./home.nix;
+            users.krystian = { config, pkgs, ... }:
+	      import ./home.nix {
+	        inherit config pkgs inputs;
+	      };
             backupFileExtension = "backup";
           };
         }
       ];
-#        inputs: {
-#          homeManagerModules.default = import ./caelestia.nix inputs;
-#        };
     };
   };
 }
