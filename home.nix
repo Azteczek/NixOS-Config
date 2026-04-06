@@ -20,7 +20,7 @@
 		./home-minis/nvim.nix
 		./home-minis/mnta.nix
 	];
-	
+        _module.args = { inherit inputs; };	
 	
 
 # Config files
