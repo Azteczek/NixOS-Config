@@ -10,14 +10,20 @@
     mnta = {
       url = "github:Khenziii/mnta";
     };
+    prismcrack = {
+      url = "github:Diegiwg/PrismLauncher-Cracked";
+    };
   };
 
 
-  outputs = { nixpkgs, home-manager, mnta, ...} @ inputs: {
+  outputs = { nixpkgs, home-manager, mnta, prismcrack, ...} @ inputs: {
     nixosConfigurations.krystian = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      
       modules = [
         ./configuration.nix
+
         home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -29,8 +35,10 @@
 	      };
             backupFileExtension = "backup";
           };
-        }
+	}
+      
       ];
+
     };
   };
 }

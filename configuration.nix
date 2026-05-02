@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports =
@@ -60,8 +60,17 @@
     theme = "sugar-dark";
   }; 
 
-  # Enable CUPS to print documents.
+  networking.firewall.allowedTCPPorts = [8080 8000 3979 25565];
+  networking.firewall.allowedUDPPorts = [
+  #  34197 # Factorio.
+    3979 # OpenTTD.
+    #25565
+  ];
+  networking.firewall.checkReversePath = "loose";
+  networking.firewall.trustedInterfaces = [ "ztktix6bjp" ]; 
+  # Enable CUPS to print documents
   services.printing.enable = true;
+  services.printing.drivers = [ pkgs.hplipWithPlugin ];
   
   # Unfree allowed
   nixpkgs.config.allowUnfree = true;
@@ -78,7 +87,8 @@
     xwayland.enable = true;
   };
 
-  programs.fish.enable = true;
+ # programs.fish.enable = true;
+ # users.defaultUserShell = pkgs.fish;  
 
   services.gvfs.enable = true;
   services.udisks2.enable = true; 
@@ -98,6 +108,16 @@
  
   hardware.bluetooth.enable = true;
   
+  services.logmein-hamachi.enable = true;
+
+  services.zerotierone.enable = true;  
+
+  security.polkit.enable = true;
+
+  programs.steam = {
+    enable = true;
+  };
+
   programs.git = {
     enable = true;
     config = {
@@ -112,13 +132,14 @@
   environment.systemPackages = with pkgs; [
     #vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    hplipWithPlugin
     spotify
     kitty
     foot
     waybar
     git
     hyprpaper
-    discord-ptb
+    discord
     librewolf
     libreoffice
     lshw
@@ -135,7 +156,18 @@
     usbutils
     p7zip-rar
     unzip
+    openttd
+    haguichi
+    zerotierone
+    inputs.prismcrack.packages.${pkgs.system}.default
+    lunar-client
+    vscode
+    libgcc
+    gcc
+    python3
+ #   vinegar
 ];
+
 
 
 
