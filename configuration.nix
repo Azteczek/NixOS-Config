@@ -36,10 +36,7 @@
     hplipWithPlugin
     spotify
     kitty
-    foot
     waybar
-    git
-    hyprpaper
     discord
     librewolf
     libreoffice
@@ -60,12 +57,17 @@
     openttd
     haguichi
     zerotierone
-    inputs.prismcrack.packages.${pkgs.system}.default
     lunar-client
     vscode
     libgcc
     gcc
     python3
+    pavucontrol              
+    playerctl                
+    wlogout                  
+    swaynotificationcenter   
+    lexend                   
+    nerd-fonts.jetbrains-mono
  #   vinegar
 ];
 

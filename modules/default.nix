@@ -7,7 +7,7 @@
 		./steam.nix
 		./zerotierone.nix
 		./bluetooth.nix  
-		./flatpak.nix   
+		./flatpak.nix
 		./hyprland.nix
 		./printing.nix
 		./udisks2.nix
@@ -15,6 +15,7 @@
 		./git.nix
 		./logmein-hamachi.nix
 		./sddm.nix
+		./foot.nix
 		./vbox.nix
 	];
 }

@@ -17,18 +17,11 @@
 	};
 
 	imports = [
-		./home-minis/nvim.nix
-		./home-minis/mnta.nix
+		./modules/nvim.nix
+		./modules/mnta.nix
+		./modules/waybar.nix
+		./home-manager/hyprpaper.nix
 	];
         _module.args = { inherit inputs; };	
 	
-
-# Config files
-# !! WAYBAR !! 
-	xdg.configFile."waybar/config.jsonc".source = ./config/waybar/config.jsonc;
-	xdg.configFile."waybar/style.css".source = ./config/waybar/style.css;
-# !! FOOT !!
-	xdg.configFile."foot/foot.ini".source = ./config/foot/foot.ini;
-# !! HYPRPAPER !!
-	xdg.configFile."hypr/hyprpaper.conf".source = ./config/hypr/hyprpaper.conf;
 }
